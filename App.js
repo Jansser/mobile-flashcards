@@ -5,6 +5,27 @@ import { Provider } from 'react-redux';
 import { Constants } from 'expo';
 import reducer from './reducers';
 import DeckList from './components/DeckList';
+import DeckDetail from './components/DeckDetail';
+import { TabNavigator, createStackNavigator } from 'react-navigation';
+
+const MainNavigator = createStackNavigator({
+  Home: {
+    screen: DeckList, 
+    navigationOptions: {
+      header: null
+    }   
+  },
+  DeckDetail: {
+    screen: DeckDetail,
+    navigationOptions: {
+      headerTintColor: 'white',
+      headerStyle: {
+        backgroundColor: 'black',
+      }
+    }
+  }
+}, {
+});
 
 export default class App extends Component {
   render() {
@@ -14,8 +35,7 @@ export default class App extends Component {
           <View style={{ backgroundColor: '#000', height: Constants.statusBarHeight }}>
             <StatusBar translucent backgroundColor={'#000'} barStyle="light-content"/>
           </View>
-
-          <DeckList />
+          <MainNavigator />
         </View>
       </Provider>
     );
