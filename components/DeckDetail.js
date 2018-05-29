@@ -21,7 +21,7 @@ class DeckDetail extends Component {
       <View>
         <DeckHeader key={deck.title} deck={deck} />
         <Button onPress={() => navigation.navigate('QuestionForm', { deck: deck })} title='Add Card' />
-        <Button onPress={() => console.log('Start Quiz') } title='Start Quiz' />
+        <Button onPress={() => navigation.navigate('Quiz', { title: deck.title }) } title='Start Quiz' />
       </View>
     );
   }

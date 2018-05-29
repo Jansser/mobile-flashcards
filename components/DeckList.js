@@ -36,18 +36,16 @@ class DeckList extends Component {
           <TouchableOpacity key={deck.title} 
             style={styles.listItem}
             onPress={() => navigation.navigate('DeckDetail', { title: deck.title })}>
-          <DeckHeader deck={deck}/>
-        </TouchableOpacity >)}
+            <DeckHeader deck={deck}/>
+          </TouchableOpacity >
+        )}
       </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  listItem: {
-    borderBottomColor: '#757575',
-    borderBottomWidth: 1
-  },
+  listItem: {},
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -11,6 +11,7 @@ import QuestionForm from './components/QuestionForm';
 import { createBottomTabNavigator, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 import DeckForm from './components/DeckForm';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
+import Quiz from './components/Quiz';
 
 console.disableYellowBox = true;
 
@@ -51,6 +52,9 @@ const MainNavigator = createStackNavigator({
   },
   QuestionForm: {
     screen: QuestionForm
+  },
+  Quiz: {
+    screen: Quiz
   }
 }, 
 {

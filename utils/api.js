@@ -4,7 +4,6 @@ export const FLASH_STORAGE_KEY = 'MobileFlashCards:decks';
 
 //AsyncStorage.clear();
 
-
 export const fetchDecks = () => {
   AsyncStorage.setItem(FLASH_STORAGE_KEY, null);
 
@@ -67,12 +66,3 @@ export const addCardToDeck = (title, card) => {
     return submitDeck(deck);
   });
 }
-
-
-
-/* 
-  getDecks
-  getDeck
-  saveDeckTitle
-  addCardToDeck
-*/

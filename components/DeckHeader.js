@@ -1,14 +1,20 @@
 import React from 'react';
 import { Text, View, StyleSheet } from 'react-native';
 
+import { 
+  Card 
+} from 'react-native-elements';
+
 const DeckHeader = props => {
   const { deck } = props;
 
   return (
-    <View style={ styles.container } onPress={ () => { console.log('PRessed') } }>
-      <Text style={ styles.title }>{ deck.title }</Text>
-      <Text style={ styles.subtitle }>{ deck.questions.length } cards</Text>
-    </View>
+    <Card>
+      <View style={ styles.container }>
+        <Text style={ styles.title }>{ deck.title }</Text>
+        <Text style={ styles.subtitle }>{ deck.questions.length } cards</Text>
+      </View>
+    </Card>
   );
 }
 
