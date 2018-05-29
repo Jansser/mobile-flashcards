@@ -10,6 +10,8 @@ class DeckList extends Component {
     const { getDecks } = this.props;
 
     fetchDecks().then((decks) => {
+      console.log('Decks', decks);
+      
       getDecks(decks);
     });
   }
@@ -31,7 +33,7 @@ class DeckList extends Component {
         {Object.values(decks).map(deck => 
           <TouchableOpacity key={deck.title} 
             style={styles.listItem}
-            onPress={() => navigation.navigate('DeckDetail', { deck: deck })}>
+            onPress={() => navigation.navigate('DeckDetail', { title: deck.title })}>
           <DeckHeader deck={deck}/>
         </TouchableOpacity >)}
       </ScrollView>

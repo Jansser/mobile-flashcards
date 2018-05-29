@@ -6,6 +6,8 @@ import { Constants } from 'expo';
 import reducer from './reducers';
 import DeckList from './components/DeckList';
 import DeckDetail from './components/DeckDetail';
+import QuestionForm from './components/QuestionForm';
+
 import { createBottomTabNavigator, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 import DeckForm from './components/DeckForm';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
@@ -44,14 +46,18 @@ const MainNavigator = createStackNavigator({
   },
   DeckDetail: {
     screen: DeckDetail,
-    navigationOptions: {
-      headerTintColor: 'white',
-      headerStyle: {
-        backgroundColor: 'black',
-      }
+  },
+  QuestionForm: {
+    screen: QuestionForm
+  }
+}, 
+{
+  navigationOptions: {
+    headerTintColor: 'white',
+    headerStyle: {
+      backgroundColor: 'black',
     }
   }
-}, {
 });
 
 export default class App extends Component {
