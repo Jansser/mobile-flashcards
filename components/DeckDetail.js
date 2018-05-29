@@ -14,24 +14,8 @@ class DeckDetail extends Component {
     }
   }
 
-  state = {
-    deck: {},
-    loading: true,
-  }
-
-  componentDidMount() {
-    const { title } = this.props;
-
-    getDeck(title).then(deck => this.setState({ deck , loading:false }));
-  }
-
   render() {
-    const { deck, loading } = this.state;
-    const { navigation } = this.props;
-
-    if(loading) {
-      return <Loader/>;
-    }
+    const { navigation, deck } = this.props;
 
     return (
       <View>
@@ -45,9 +29,11 @@ class DeckDetail extends Component {
 
 const mapStateToProps = (decks, { navigation }) => {
   const { title } = navigation.state.params;
-  
+  const deck = decks[title];
+
   return {
-    title
+    title,
+    deck
   }
 }
 

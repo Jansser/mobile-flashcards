@@ -7,11 +7,13 @@ import DeckHeader from './DeckHeader';
 
 class DeckList extends Component {
   componentDidMount () {
+    this.loadDecks();
+  }
+
+  loadDecks = () => {
     const { getDecks } = this.props;
 
     fetchDecks().then((decks) => {
-      console.log('Decks', decks);
-      
       getDecks(decks);
     });
   }

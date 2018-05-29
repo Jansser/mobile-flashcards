@@ -24,11 +24,16 @@ class DeckForm extends Component {
 
     addDeck(deck);
     submitDeck(deck);
-    this.toHome();
+    this.toDeckDetail(title);
   }
 
-  toHome = () => {
-    this.props.navigation.dispatch(NavigationActions.back({key: 'DeckList'}));
+  toDeckDetail = (deckTitle) => {
+    this.props.navigation.dispatch(NavigationActions.navigate({ 
+      routeName: 'DeckDetail', 
+      params: {
+        title: deckTitle
+      } 
+    }));
   }
 
   render() {

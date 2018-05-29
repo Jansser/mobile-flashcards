@@ -12,6 +12,8 @@ import { createBottomTabNavigator, createMaterialTopTabNavigator, createStackNav
 import DeckForm from './components/DeckForm';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 
+console.disableYellowBox = true;
+
 const createTabNavigator = Platform.OS === 'ios' ?  createBottomTabNavigator : createMaterialTopTabNavigator;
 
 const Tabs = createTabNavigator({

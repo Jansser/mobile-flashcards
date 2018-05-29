@@ -13,6 +13,7 @@ import {
 import { connect } from 'react-redux';
 import { addCardToDeck } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
+import { addCard } from '../actions';
 
 class QuestionForm extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -30,7 +31,7 @@ class QuestionForm extends Component {
   submit = () => {
     this.setState({ submited: true });
     const { question, answer } = this.state;
-    const { deck } = this.props;
+    const { deck, navigation, addCard } = this.props;
     
     if(question === '' && answer === '') {
       return;
@@ -39,14 +40,9 @@ class QuestionForm extends Component {
     let card = { question, answer };
 
     addCardToDeck(deck.title, card);
+    addCard(deck.title, card);
     
-    this.props.navigation.dispatch(NavigationActions.back({key: 'DeckList'}));
-
-    //this.toHome();
-  }
-
-  toHome = () => {
-    this.props.navigation.dispatch(NavigationActions.back({key: 'DeckList'}))
+    navigation.dispatch(NavigationActions.navigate({routeName: 'DeckDetail', params: { title: deck.title } }));
   }
 
   renderErrorMessage = (field) => {
@@ -82,7 +78,6 @@ class QuestionForm extends Component {
           backgroundColor='black'
           onPress={this.submit}
           raised
-          icon={{name: 'cached'}}
           title='SUBMIT' />
       </View>
     );
@@ -97,16 +92,9 @@ const mapStateToProps = (decks, { navigation }) => {
   }
 }
 
-export default connect(mapStateToProps,)(QuestionForm);
+const mapDispatchToProps = dispatch => ({
+  addCard: (title, card) => { dispatch(addCard(title, card)) },
+});
 
-/* 
-  {
-          question --- '' &&
-          <FormValidationMessage>Question is required!</FormValidationMessage>
-        }
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionForm);
 
-  {
-          answer --- '' &&
-          <FormValidationMessage>Answer is required!</FormValidationMessage>
-        }
-         */
