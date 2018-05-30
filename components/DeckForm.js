@@ -4,7 +4,14 @@ import { addDeck } from '../actions';
 import { connect } from 'react-redux';
 import { submitDeck } from '../utils/api';
 import { NavigationActions } from 'react-navigation';
-import { Button, FormLabel, FormInput, FormValidationMessage, Text } from 'react-native-elements';
+import { 
+  Button, 
+  FormLabel, 
+  FormInput, 
+  FormValidationMessage, 
+  Text ,
+  Card
+} from 'react-native-elements';
 
 class DeckForm extends Component {
   state = {
@@ -39,13 +46,15 @@ class DeckForm extends Component {
   render() {
     return (
       <View>
-        <Text h3 style={{textAlign: 'center'}}> What is the title of your new deck? </Text>
-        <FormInput
-          placeholder='Deck Title'
-          onChangeText={(title) => this.setState({title})}
-        />
+        <Card>
+          <Text h3 style={{textAlign: 'center'}}> What is the title of your new deck? </Text>
+          <FormInput
+            placeholder='Deck Title'
+            onChangeText={(title) => this.setState({title})}
+          />
 
-        <Button title='Submit' onPress={this.submit} backgroundColor='black' />
+          <Button title='Submit' onPress={this.submit} backgroundColor='black' />
+        </Card>
       </View>
     );
   }

@@ -3,7 +3,6 @@ import {
   StyleSheet, 
   Text, 
   View, 
-  Button,
   Animated,
   Easing
 } from 'react-native';
@@ -11,6 +10,11 @@ import DeckHeader from './DeckHeader';
 import { connect } from 'react-redux';
 import { getDeck } from '../utils/api';
 import Loader from './Loader';
+import { 
+  Button, 
+  Card
+} from 'react-native-elements';
+import styles from '../styles';
 
 class DeckDetail extends Component {
   componentDidMount() {
@@ -35,8 +39,19 @@ class DeckDetail extends Component {
     return (
       <Animated.View>
         <DeckHeader key={deck.title} deck={deck} />
-        <Button onPress={() => navigation.navigate('QuestionForm', { deck: deck })} title='Add Card' />
-        <Button onPress={() => navigation.navigate('Quiz', { title: deck.title }) } title='Start Quiz' />
+        
+        <View style={styles.buttonContainer}>
+          <Button 
+            buttonStyle={styles.button}
+            onPress={() => navigation.navigate('QuestionForm', { deck: deck })} 
+            title='Add Card'/>
+        </View>
+        <View style={styles.buttonContainer}>
+          <Button 
+            buttonStyle={styles.button}
+            onPress={() => navigation.navigate('Quiz', { title: deck.title })} 
+            title='Start Quiz' />
+        </View>
       </Animated.View>
     );
   }

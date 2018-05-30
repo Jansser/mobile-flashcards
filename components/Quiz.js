@@ -6,7 +6,8 @@ import {
 import { 
   Button, 
   Text,
-  Card 
+  Card,
+  Badge
 } from 'react-native-elements';
 import {
   clearLocalNotification,
@@ -14,6 +15,7 @@ import {
 } from '../utils/notifications';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
+import styles from '../styles';
 
 class Quiz extends Component {
   static navigationOptions = ({ navigation }) => {
@@ -72,22 +74,27 @@ class Quiz extends Component {
       this.resetNotification();
       
       return(
-        <View>
-          <Text h3>
-            {100 / total * corrects}%
-          </Text>
-          <Text>
-            You Got {corrects}/{total}.
-          </Text>
-
+        <View style={styles.centeredContainer}>
           <View>
+            <Text h3>
+              {100 / total * corrects}%
+            </Text>
+
+            <Text>
+              You Got {corrects}/{total}.
+            </Text>
+          </View>
+
+          <View style={styles.buttonContainer}>
             <Button 
-              small
+              buttonStyle={styles.button}
               onPress={this.restartQuiz}
               title='Restart Quiz'/>
-            
-            <Button 
-              small
+          </View>
+          
+          <View style={styles.buttonContainer}>
+            <Button
+              buttonStyle={styles.button}
               onPress={this.goToDeck}
               title='Back to Deck'/>
           </View>
@@ -100,9 +107,11 @@ class Quiz extends Component {
     
     return (
       <View>
-        <Text>
-          {index + 1}/{total}
-        </Text>
+        <View style={{ padding: 5 }}>
+          <Text style={{ fontSize: 20 }}>
+            {index + 1}/{total}
+          </Text>
+        </View>
         
         <Card>
           <View>
@@ -114,26 +123,31 @@ class Quiz extends Component {
 
         {showAnswer ? 
           <View>
-            <Button 
-              small
-              onPress={() => this.nextQuestion(true)}
-              backgroundColor='green'
-              title='Correct'
-            />
+            <View style={styles.buttonContainer}>
+              <Button 
+                onPress={() => this.nextQuestion(true)}
+                backgroundColor='green'
+                title='Correct'
+              />
+            </View>
 
-            <Button 
-              backgroundColor='red'
-              onPress={() => this.nextQuestion(false)}
-              title='Incorrect'
-            />
+            <View style={styles.buttonContainer}>
+              <Button 
+                backgroundColor='red'
+                onPress={() => this.nextQuestion(false)}
+                title='Incorrect'
+              />
+            </View>
           </View>
           
           : 
-          
-          <Button 
-            small
-            onPress={() => this.setState({ showAnswer: true })}
-            title='Answer'/>
+
+          <View style={styles.buttonContainer}>
+            <Button 
+              buttonStyle={styles.button}
+              onPress={() => this.setState({ showAnswer: true })}
+              title='Answer'/>
+          </View>
         }
       </View>
     );

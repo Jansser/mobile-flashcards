@@ -13,6 +13,7 @@ import { createBottomTabNavigator, createMaterialTopTabNavigator, createStackNav
 import DeckForm from './components/DeckForm';
 import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import Quiz from './components/Quiz';
+import styles from './styles';
 
 console.disableYellowBox = true;
 
@@ -86,12 +87,3 @@ export default class App extends Component {
     );
   }
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#e7e4dd',
-    //alignItems: 'center',
-    //justifyContent: 'center',
-  },
-});

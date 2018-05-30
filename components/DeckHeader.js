@@ -33,6 +33,4 @@ const styles = StyleSheet.create({
   }
 });
 
-
-
 export default DeckHeader;
