@@ -2,11 +2,7 @@ import { AsyncStorage } from 'react-native';
 export const FLASH_STORAGE_KEY = 'MobileFlashCards:decks';
 
 
-//AsyncStorage.clear();
-
 export const fetchDecks = () => {
-  AsyncStorage.setItem(FLASH_STORAGE_KEY, null);
-
   return AsyncStorage.getItem(FLASH_STORAGE_KEY).then(
     (results) => {
       if(results === null) {

@@ -40,6 +40,7 @@ export const setLocalNotification = () => {
                 }
               )
 
+              console.log('setItem');
               AsyncStorage.setItem(NOTIFICATION_KEY, JSON.stringify(true))
             }
           });

@@ -33,7 +33,7 @@ class QuestionForm extends Component {
     const { question, answer } = this.state;
     const { deck, navigation, addCard } = this.props;
     
-    if(question === '' && answer === '') {
+    if(question === '' || answer === '') {
       return;
     }
 
