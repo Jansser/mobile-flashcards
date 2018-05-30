@@ -7,6 +7,7 @@ import reducer from './reducers';
 import DeckList from './components/DeckList';
 import DeckDetail from './components/DeckDetail';
 import QuestionForm from './components/QuestionForm';
+import { setLocalNotification } from './utils/notifications';
 
 import { createBottomTabNavigator, createMaterialTopTabNavigator, createStackNavigator } from 'react-navigation';
 import DeckForm from './components/DeckForm';
@@ -66,7 +67,12 @@ const MainNavigator = createStackNavigator({
   }
 });
 
+
 export default class App extends Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+
   render() {
     return (
       <Provider store={createStore(reducer)}>

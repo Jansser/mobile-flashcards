@@ -3,13 +3,15 @@ import {
   StyleSheet, 
   View, 
 } from 'react-native';
-
 import { 
   Button, 
   Text,
   Card 
 } from 'react-native-elements';
-
+import {
+  clearLocalNotification,
+  setLocalNotification
+} from '../utils/notifications';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 
@@ -28,12 +30,17 @@ class Quiz extends Component {
     corrects: 0,
   }
 
+  resetNotification = () => {
+    clearLocalNotification().then(setLocalNotification)
+  }
+
   nextQuestion = (correct) => {
     this.setState((prevState, props) => ({
       index: prevState.index + 1,
       showAnswer: false,
       corrects: correct === true ? prevState.corrects + 1 : prevState.corrects
     }));
+    
   }
 
   restartQuiz = () => {
@@ -41,7 +48,7 @@ class Quiz extends Component {
       index: 0,
       showAnswer: false,
       corrects: 0
-    })
+    });
   }
 
   goToDeck = () => {
@@ -62,6 +69,8 @@ class Quiz extends Component {
     
     //Score
     if(index === total) {
+      this.resetNotification();
+      
       return(
         <View>
           <Text h3>
